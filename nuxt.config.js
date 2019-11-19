@@ -1,4 +1,11 @@
 
+require('dotenv').config();
+
+let API_BASE_URL = '/api';
+if(process.env.API_BASE_URL) {
+  API_BASE_URL = process.env.API_BASE_URL;
+}
+
 export default {
   mode: 'universal',
   /*
@@ -49,6 +56,13 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true,
+  },
+  proxy: {
+    '/api': {
+      target: API_BASE_URL,
+      pathRewrite: {'^/api': ''},
+    },
   },
   /*
   ** Build configuration
