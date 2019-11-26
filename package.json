@@ -2,7 +2,7 @@
   "name": "phrocman-frontend",
   "version": "1.0.0",
   "description": "HTTP frontend for Phrocman",
-  "author": "Lajos Bencz &lt;lazos@lazos.me&gt;",
+  "author": "Lajos Bencz <lazos@lazos.me>",
   "private": true,
   "scripts": {
     "dev": "nuxt",
