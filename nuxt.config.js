@@ -7,7 +7,7 @@ if(process.env.API_BASE_URL) {
 }
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -36,7 +36,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/antd-ui'
+    '@/plugins/antd-ui',
+    '@/plugins/wamp'
   ],
   /*
   ** Nuxt.js dev-modules
