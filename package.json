@@ -14,9 +14,11 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
     "ant-design-vue": "^1.1.10",
+    "autobahn": "^19.10.1",
     "node-sass": "^4.13.0",
     "nuxt": "^2.0.0",
-    "sass-loader": "^8.0.0"
+    "sass-loader": "^8.0.0",
+    "vue-wamp": "^2.1.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"
