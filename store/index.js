@@ -80,11 +80,16 @@ export const actions = {
 export const plugins = [
   async function (store) {
     await store.dispatch('updateManager');
-    await Vue.Wamp.subscribe('start', (args, kvArgs, details) => {
-      console.log('start', {args, kvArgs, details});
-    });
-    await Vue.Wamp.subscribe('stop', (args, kvArgs, details) => {
-      console.log('stop', {args, kvArgs, details});
-    });
+    await Promise.all([
+      Vue.Wamp.subscribe('start', (args, kvArgs, details) => {
+        console.log('start', {args, kvArgs, details});
+      }),
+      Vue.Wamp.subscribe('exit', (args, kvArgs, details) => {
+        console.log('exit', {args, kvArgs, details});
+      }),
+      Vue.Wamp.subscribe('fail', (args, kvArgs, details) => {
+        console.log('fail', {args, kvArgs, details});
+      }),
+    ]);
   },
 ];
