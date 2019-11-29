@@ -9,18 +9,16 @@
       Logo
     },
     data() {
-      return {
-        info: {},
-      };
+      return {};
     },
     computed: {
+      info() {
+        return this.$store.state.manager;
+      }
     },
     methods: {
     },
     mounted() {
-      this.$wamp.call('index').then(r => {
-        this.info = r;
-      });
     }
   }
 </script>

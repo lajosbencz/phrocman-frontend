@@ -8,18 +8,17 @@
   import Group from "../../components/group";
   export default {
     components: {Group},
-    beforeRouteEnter(to, from, next) {
-      next(async vm => {
-        let info = await vm.$wamp.call('groupInfo', [], {uid: to.params.uid});
-        console.log({info});
-        vm.info = info;
-      });
-    },
     name: "page-group",
     data() {
       return {
-        info: {},
+      //  info: {},
       };
+    },
+    computed: {
+      info() {
+        const info = this.$store.getters.findGroupByUid(this.$route.params.uid);
+        return info ? info : {};
+      },
     },
   }
 </script>
