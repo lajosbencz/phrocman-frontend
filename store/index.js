@@ -115,6 +115,9 @@ async function _setState(store, kvArgs)
 
 export const plugins = [
   async function (store) {
+    Vue.Wamp.subscribe('event', (args, kvArgs, details) => {
+      console.log('event', kvArgs);
+    });
     await store.dispatch('updateManager');
     await Promise.all([
       Vue.Wamp.subscribe('start', async (args, kvArgs, details) => {
