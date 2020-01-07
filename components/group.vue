@@ -1,28 +1,31 @@
 <script>
   import Controls from "./controls";
+  import Status from "./status";
   export default {
     name: "group",
-    components: {Controls},
+    components: {Status, Controls},
     props: {
       info: {
         type: Object,
         required: true,
       },
     },
+    data() {
+      return {
+        _subscription: null,
+      };
+    },
     computed: {
 
     },
     methods: {
       async start() {
-        console.log(this.info);
         await this.$wamp.call('groupStart', [], {uid: this.info.uid});
       },
       async stop() {
-        console.log(this.info);
         await this.$wamp.call('groupStop', [], {uid: this.info.uid});
       },
       async restart() {
-        console.log(this.info);
         await this.$wamp.call('groupRestart', [], {uid: this.info.uid});
       },
     },
@@ -44,8 +47,7 @@
         <span>
           <span class="ant-breadcrumb-link">
             {{ info.name }}
-            <a-icon v-if="info.running" type="check-circle" theme="twoTone" two-tone-color="#0a0" />
-            <a-icon v-else type="close-circle" theme="twoTone" two-tone-color="#a00" />
+            <status :running="info.running" />
           </span>
         </span>
       </div>
@@ -60,6 +62,7 @@
         <h4>Services</h4>
         <nuxt-link v-for="service in info.services" :key="service.uid" :to="'/service/'+service.uid" class="antd-btn">
           {{ service.name }}
+          <status :running="service.running" />
         </nuxt-link>
       </div>
       <h4 v-else>No services</h4>
@@ -70,6 +73,7 @@
         <h4>Timers</h4>
         <nuxt-link v-for="timer in info.timers" :key="timer.uid" :to="'/timer/'+timer.uid" class="antd-btn">
           {{ timer.name }}
+          <status :running="timer.running" />
         </nuxt-link>
       </div>
       <h4 v-else>No timers</h4>
@@ -80,6 +84,7 @@
         <h4>Children</h4>
         <nuxt-link v-for="child in info.children" :key="child.uid" :to="'/group/'+child.uid" class="antd-btn">
           {{ child.name }}
+          <status :running="child.running" />
         </nuxt-link>
       </div>
       <h4 v-else>No children</h4>
