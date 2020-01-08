@@ -3,7 +3,7 @@ import Vue from 'vue';
 import VueWamp from 'vue-wamp/dist/vue-wamp.esm'
 
 
-let url = '/ws';
+let url = 'wss://' + window.location.host + '/ws';
 if(process.env.NODE_ENV === 'development') {
   url = 'ws://127.0.0.1/ws';
 }
