@@ -10,7 +10,7 @@ export default {
   mode: 'spa',
   server: {
     port: 3000,
-    host: '10.135.156.87',
+    host: '0.0.0.0',
   },
   /*
   ** Headers of the page
