@@ -8,6 +8,10 @@ if(process.env.API_BASE_URL) {
 
 export default {
   mode: 'spa',
+  server: {
+    port: 3000,
+    host: '10.135.156.87',
+  },
   /*
   ** Headers of the page
   */
