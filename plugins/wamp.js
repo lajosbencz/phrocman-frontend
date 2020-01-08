@@ -2,7 +2,11 @@
 import Vue from 'vue';
 import VueWamp from 'vue-wamp/dist/vue-wamp.esm'
 
-let url = 'ws://127.0.0.1:8080/ws';
+
+let url = '/ws';
+if(process.env.NODE_ENV === 'development') {
+  url = 'ws://127.0.0.1/ws';
+}
 if(process.env.WAMP_URL) {
   url = process.env.WAMP_URL;
 }
