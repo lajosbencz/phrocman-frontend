@@ -3,7 +3,7 @@
     name: "page-timer",
     computed: {
       info() {
-        return this.$store.getters.findTimerByUid(this.$route.params.uid);
+        return this.$store.getters.findByUid(this.$route.params.uid);
       },
     },
   }

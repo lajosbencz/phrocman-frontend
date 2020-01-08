@@ -16,7 +16,7 @@
     },
     computed: {
       info() {
-        const info = this.$store.getters.findGroupByUid(this.$route.params.uid);
+        const info = this.$store.getters.findByUid(this.$route.params.uid);
         return info ? info : {};
       },
     },
