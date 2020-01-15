@@ -21,16 +21,19 @@
     },
     methods: {
       async start() {
+        if(this.loading) return;
         this.loading = true;
         await this.$wamp.call('groupStart', [], {uid: this.info.uid});
         this.loading = false;
       },
       async stop() {
+        if(this.loading) return;
         this.loading = true;
         await this.$wamp.call('groupStop', [], {uid: this.info.uid});
         this.loading = false;
       },
       async restart() {
+        if(this.loading) return;
         this.loading = true;
         await this.$wamp.call('groupRestart', [], {uid: this.info.uid});
         this.loading = false;

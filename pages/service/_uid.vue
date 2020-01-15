@@ -40,23 +40,27 @@
     },
     methods: {
       async updateInfo() {
+        if(this.loading) return;
         this.loading = true;
         this.info = await this.$wamp.call('serviceInfo', [], {uid: this.$route.params.uid});
         this.loading = false;
       },
       async start() {
+        if(this.loading) return;
         this.loading = true;
         let res = await this.$wamp.call('serviceStart', [], {uid: this.$route.params.uid});
         await this.updateInfo();
         this.loading = false;
       },
       async restart() {
+        if(this.loading) return;
         this.loading = true;
         let res = await this.$wamp.call('serviceRestart', [], {uid: this.$route.params.uid});
         await this.updateInfo();
         this.loading = false;
       },
       async stop() {
+        if(this.loading) return;
         this.loading = true;
         let res = await this.$wamp.call('serviceStop', [], {uid: this.$route.params.uid});
         await this.updateInfo();
