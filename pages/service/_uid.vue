@@ -30,6 +30,7 @@
         _subscription: null,
         lines: [],
         info: {},
+        loading: false,
       };
     },
     computed: {
@@ -39,19 +40,31 @@
     },
     methods: {
       async updateInfo() {
+        if(this.loading) return;
+        this.loading = true;
         this.info = await this.$wamp.call('serviceInfo', [], {uid: this.$route.params.uid});
+        this.loading = false;
       },
       async start() {
+        if(this.loading) return;
+        this.loading = true;
         let res = await this.$wamp.call('serviceStart', [], {uid: this.$route.params.uid});
         await this.updateInfo();
+        this.loading = false;
       },
       async restart() {
+        if(this.loading) return;
+        this.loading = true;
         let res = await this.$wamp.call('serviceRestart', [], {uid: this.$route.params.uid});
         await this.updateInfo();
+        this.loading = false;
       },
       async stop() {
+        if(this.loading) return;
+        this.loading = true;
         let res = await this.$wamp.call('serviceStop', [], {uid: this.$route.params.uid});
         await this.updateInfo();
+        this.loading = false;
       },
       onStdout(data, item, group) {
         this.lines.unshift({
@@ -83,9 +96,23 @@
       <p v-for="line in lines" :class="['line-'+line.type]">
         {{ line.message }}
       </p>
+      <div class="loading" v-show="loading">
+        <a-spin />
+      </div>
     </div>
 </template>
 
 <style lang="scss">
+  .page-service {
+    position: relative;
 
+    .loading {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(255,255,255,0.8);
+    }
+  }
 </style>
