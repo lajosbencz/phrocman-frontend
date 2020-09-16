@@ -5,7 +5,7 @@ import VueWamp from 'vue-wamp/dist/vue-wamp.esm'
 
 let url = 'wss://' + window.location.host + '/ws';
 if(process.env.NODE_ENV === 'development') {
-  url = 'ws://127.0.0.1/ws';
+  url = 'ws://127.0.0.1:8080/ws';
 }
 if(process.env.WAMP_URL) {
   url = process.env.WAMP_URL;

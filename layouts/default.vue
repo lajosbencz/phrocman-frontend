@@ -1,3 +1,13 @@
+<script>
+  export default {
+    async mounted() {
+      await this.$wamp.subscribe('stdout', function(args, kwArgs) {
+        console.log(args);
+      });
+    },
+  }
+</script>
+
 <template>
   <div class="layout-default">
     <nuxt />

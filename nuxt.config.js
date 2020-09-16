@@ -6,11 +6,20 @@ if(process.env.API_BASE_URL) {
   API_BASE_URL = process.env.API_BASE_URL;
 }
 
+let HOST = process.env.NODE_ENV === 'production' ? '10.135.156.87' : 'localhost';
+if(process.env.HOST) {
+  HOST = process.env.HOST;
+}
+let PORT = 3000;
+if(process.env.PORT) {
+  PORT = process.env.PORT;
+}
+
 export default {
   mode: 'spa',
   server: {
-    port: 3000,
-    host: '10.135.156.87',
+    port: PORT,
+    host: HOST,
   },
   /*
   ** Headers of the page
