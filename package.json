@@ -16,7 +16,7 @@
     "ant-design-vue": "^1.1.10",
     "autobahn": "^19.10.1",
     "node-sass": "^4.13.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "sass-loader": "^8.0.0",
     "vue-wamp": "^2.1.0"
   },
